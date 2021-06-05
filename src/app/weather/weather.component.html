@@ -1,1 +1,17 @@
-<p>weather works!</p>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>City Name</mat-label>
+    <input matInput placeholder="Enter city name" #city>
+  </mat-form-field>
+
+  <button type="button" mat-button color="primary" (click)="getWeather(city.value)">Get Weather Details</button>
+</form>
+
+<mat-list>
+  <mat-list-item *ngIf="location.country != ''">country : {{location.country}}</mat-list-item>
+  <mat-list-item *ngIf="location.lat != 0">lat: {{location.lat}}</mat-list-item>
+  <mat-list-item *ngIf="location.localtime != ''">localtime: {{location.localtime}}</mat-list-item>
+  <mat-list-item *ngIf="location.lon != 0">lon: {{location.lon}}</mat-list-item>
+  <mat-list-item *ngIf="location.name != ''">name: {{location.name}}</mat-list-item>
+  <mat-list-item *ngIf="location.region != ''">region: {{location.region}}</mat-list-item>
+</mat-list>
