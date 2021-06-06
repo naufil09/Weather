@@ -6,6 +6,8 @@ import { WeatherComponent } from './weather.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MatListModule } from '@angular/material/list';
     WeatherRoutingModule,
     MatInputModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class WeatherModule { }

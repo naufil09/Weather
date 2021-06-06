@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiURL: 'https://weatherapi-com.p.rapidapi.com'
+  apiURL: "",
+  ANGULAR_API_KEY: "",
+  ANGULAR_API_HOST: "",
 };

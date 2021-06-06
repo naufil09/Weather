@@ -1,17 +1,70 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>City Name</mat-label>
-    <input matInput placeholder="Enter city name" #city>
-  </mat-form-field>
-
-  <button type="button" mat-button color="primary" (click)="getWeather(city.value)">Get Weather Details</button>
-</form>
-
-<mat-list>
-  <mat-list-item *ngIf="location.country != ''">country : {{location.country}}</mat-list-item>
-  <mat-list-item *ngIf="location.lat != 0">lat: {{location.lat}}</mat-list-item>
-  <mat-list-item *ngIf="location.localtime != ''">localtime: {{location.localtime}}</mat-list-item>
-  <mat-list-item *ngIf="location.lon != 0">lon: {{location.lon}}</mat-list-item>
-  <mat-list-item *ngIf="location.name != ''">name: {{location.name}}</mat-list-item>
-  <mat-list-item *ngIf="location.region != ''">region: {{location.region}}</mat-list-item>
-</mat-list>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <mat-card class="example-card">
+        <!-- <mat-card-header>
+          <mat-card-title>Weather</mat-card-title>
+        </mat-card-header> -->
+        <mat-card-content>
+          <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>City Name</mat-label>
+              <input matInput placeholder="Enter city name" #city>
+            </mat-form-field>
+            <button type="button" mat-button color="primary" (click)="getWeather(city.value)">Get Weather
+              Details</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+      <!-- <mat-spinner *ngIf="this.responseLoaded === false"></mat-spinner> -->
+    </div>
+    <div class="col-md" *ngIf="this.weatherData">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title *ngIf="this.weatherData">Weather Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngIf="this.weatherData">Country : {{this.weatherData.location?.country}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">Latitude: {{this.weatherData.location?.lat}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">Longitude: {{this.weatherData.location?.lon}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">Localtime: {{this.weatherData.location?.localtime}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">City: {{this.weatherData.location?.name}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">Region: {{this.weatherData.location?.region}}</mat-list-item>
+            <mat-list-item *ngIf="this.weatherData">Timezone: {{this.weatherData.location?.tz_id}}</mat-list-item>
+            <div class="row">
+              <div class="col-md">
+                <mat-list-item *ngIf="this.weatherData">Condition: {{this.weatherData.current?.condition.text}}
+                </mat-list-item>
+              </div>
+              <div class="col-md">
+                <img class="logo-image" src={{this.weatherData.current?.condition.icon}}>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <mat-list-item *ngIf="this.weatherData">Temp: {{this.weatherData.current?.temp_c + ' C'}}
+                </mat-list-item>
+              </div>
+              <div class="col-md">
+                <mat-list-item *ngIf="this.weatherData">{{this.weatherData.current?.temp_f + ' F'}}
+                </mat-list-item>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <mat-list-item *ngIf="this.weatherData">Wind: {{this.weatherData.current?.wind_mph + ' Mph'}}
+                </mat-list-item>
+              </div>
+              <div class="col-md">
+                <mat-list-item *ngIf="this.weatherData">{{this.weatherData.current?.wind_kph + ' Kph'}}
+                </mat-list-item>
+              </div>
+            </div>
+            <mat-list-item *ngIf="this.weatherData">Humidity: {{this.weatherData.current?.humidity}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
